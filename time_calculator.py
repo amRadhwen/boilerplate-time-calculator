@@ -23,7 +23,8 @@ def check_duration(duration):
             if hours_minutes[1] not in range(1, 60):
                 return [False, "Error: Invalid duration minutes."]
             else:
-                return [True, [int(hours_minutes[0].strip()), int(hours_minutes[1].strip())]]
+                duration_dict = {"hours": int(hours_minutes[0].strip()), "minutes": int(hours_minutes[1].strip())}
+                return [True, duration_dict]
         else:
             return [False, "Error: duration hours and minutes must be digits only."]
     else:
@@ -32,8 +33,20 @@ def check_duration(duration):
 
 # check if the day name is valid
 def check_day_name(day_name):
+    day_name = day_name.lower()
     week_days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
-    if day_name.lower() not in week_days:
+    if day_name not in week_days:
         return [False, "Error: invalid day name."]
     else:
-        return [True, day_name]
+        return [True, day_name, ]
+    
+    
+# get tha day name of the result
+def get_result_day_name(time, day_name, duration):
+    week_days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+    day_name = day_name.lower()
+    hours = duration["hours"]
+    minutes = duration["minutes"]
+    # todo
+    
+    
